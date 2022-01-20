@@ -13,12 +13,12 @@ import 'components/header.dart';
 import 'components/recent_files.dart';
 import 'components/storage_details.dart';
 
-class DashboardScreen extends StatefulWidget {
+class AdminDashboardScreen extends StatefulWidget {
   @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
+  State<AdminDashboardScreen> createState() => _AdminDashboardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
   Future<bool> getProjects(BuildContext context) async {
     if (allProjects.length == 0) {
       await context.read<MetaMaskProvider>().getTotalProjects();
@@ -45,7 +45,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             isAdmin: false,
             title: title,
             description: description,
-            timeLeft: raiseUntil - nowTime,
+            timeLeft: max(0, raiseUntil - nowTime),
             goal: goal_eth,
             currBal: curr_eth,
             status: state,
@@ -105,19 +105,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       height: defaultPadding * 1.2,
                                     ),
                                     MyFiles(
-                                      isAdmin: false,
+                                      isAdmin: true,
                                     ),
                                     SizedBox(height: defaultPadding * 1.2),
                                     RecentFiles(
-                                      isLive: 1,
-                                      isAdmin: false,
+                                      isLive: 0,
+                                      isAdmin: true,
                                     ),
                                     SizedBox(
                                       height: defaultPadding * 1.23,
                                     ),
                                     RecentFiles(
-                                      isLive: -2,
-                                      isAdmin: false,
+                                      isLive: -1,
+                                      isAdmin: true,
                                     ),
                                   ],
                                 );

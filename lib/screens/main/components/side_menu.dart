@@ -1,3 +1,4 @@
+import 'package:admin/models/Projects.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -45,14 +46,17 @@ class SideMenu extends StatelessWidget {
             press: () {},
           ),
           DrawerListTile(
-            title: "Profile",
-            svgSrc: "assets/icons/menu_profile.svg",
-            press: () {},
-          ),
-          DrawerListTile(
             title: "Settings",
             svgSrc: "assets/icons/menu_setting.svg",
             press: () {},
+          ),
+          DrawerListTile(
+            title: "Profile",
+            svgSrc: "assets/icons/menu_profile.svg",
+            press: () {
+              allProjects = [];
+              Navigator.pop(context);
+            },
           ),
         ],
       ),
